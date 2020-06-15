@@ -37,5 +37,4 @@ void Player::setDecision(Decision decision)
 }
 void Player::play()
 {
-
 }

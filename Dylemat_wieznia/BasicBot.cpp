@@ -3,7 +3,9 @@
 
 void BasicBot::play()
 {
-
+	Decision decision;
+	decision.setDecision(true);
+	setDecision(decision);
 }
 
 BasicBot::BasicBot()
