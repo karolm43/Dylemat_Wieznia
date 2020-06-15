@@ -20,6 +20,6 @@ public:
 	void setLastPoints(int points);
 	void setName(std::string name);
 	void setDecision(Decision decision);
-	virtual void play();
+	virtual void play() = 0;
 };
 

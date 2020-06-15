@@ -5,3 +5,6 @@ void BasicBot::play()
 {
 
 }
+
+BasicBot::BasicBot()
+{}

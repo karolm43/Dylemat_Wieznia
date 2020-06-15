@@ -4,3 +4,8 @@ void User::play()
 {
 
 }
+
+User::User()
+{
+
+}

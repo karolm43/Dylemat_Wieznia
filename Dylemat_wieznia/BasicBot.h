@@ -5,5 +5,6 @@ class BasicBot :
 {
 public:
     virtual void play();
+    BasicBot();
 };
 

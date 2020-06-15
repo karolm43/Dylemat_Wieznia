@@ -5,5 +5,6 @@ class User :
 {
 public:
     virtual void play();
+    User();
 };
 
