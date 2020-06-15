@@ -1,4 +1,8 @@
 #pragma once
+#include "GameWindow.h"
+
+
+
 
 namespace Dylematwieznia {
 
@@ -38,7 +42,8 @@ namespace Dylematwieznia {
 	protected:
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::NumericUpDown^ numericUpDown1;
-	private: System::Windows::Forms::Button^ Start;
+	private: System::Windows::Forms::Button^ start;
+
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::TextBox^ textBox1;
 
@@ -86,7 +91,7 @@ namespace Dylematwieznia {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->numericUpDown1 = (gcnew System::Windows::Forms::NumericUpDown());
-			this->Start = (gcnew System::Windows::Forms::Button());
+			this->start = (gcnew System::Windows::Forms::Button());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown1))->BeginInit();
@@ -132,17 +137,17 @@ namespace Dylematwieznia {
 			this->numericUpDown1->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			this->numericUpDown1->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 0 });
 			// 
-			// Start
+			// start
 			// 
-			this->Start->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->start->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->Start->Location = System::Drawing::Point(306, 402);
-			this->Start->Name = L"Start";
-			this->Start->Size = System::Drawing::Size(252, 67);
-			this->Start->TabIndex = 3;
-			this->Start->Text = L"Start";
-			this->Start->UseVisualStyleBackColor = true;
-			this->Start->Click += gcnew System::EventHandler(this, &MyForm::startClick);
+			this->start->Location = System::Drawing::Point(306, 402);
+			this->start->Name = L"start";
+			this->start->Size = System::Drawing::Size(252, 67);
+			this->start->TabIndex = 3;
+			this->start->Text = L"Start";
+			this->start->UseVisualStyleBackColor = true;
+			this->start->Click += gcnew System::EventHandler(this, &MyForm::start_Click);
 			// 
 			// label3
 			// 
@@ -176,7 +181,7 @@ namespace Dylematwieznia {
 			this->ClientSize = System::Drawing::Size(860, 554);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->label3);
-			this->Controls->Add(this->Start);
+			this->Controls->Add(this->start);
 			this->Controls->Add(this->numericUpDown1);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
@@ -194,11 +199,18 @@ namespace Dylematwieznia {
 
 		}
 #pragma endregion
-	
-private: System::Void startClick(System::Object^ sender, System::EventArgs^ e) {
 
 
+private: System::Void start_Click(System::Object^ sender, System::EventArgs^ e) {
 
+
+	GameWindow ^f = gcnew GameWindow(textBox1->Text);
+	this->Hide();
+	f->ShowDialog();
+	f->Show();
 }
+	  
+	   
+		  
 };
 }

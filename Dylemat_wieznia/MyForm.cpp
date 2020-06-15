@@ -3,6 +3,7 @@
 
 using namespace System;
 using namespace Dylematwieznia;
+
 [STAThreadAttribute]
 
 int main(array <System::String^>^ args)
@@ -11,4 +12,5 @@ int main(array <System::String^>^ args)
 	Application::SetCompatibleTextRenderingDefault(false);
 	Application::Run(gcnew MyForm());
 	return 0;
+
 }

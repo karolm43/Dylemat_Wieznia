@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 namespace Dylematwieznia {
 
 	using namespace System;
@@ -15,6 +16,8 @@ namespace Dylematwieznia {
 	public ref class GameWindow : public System::Windows::Forms::Form
 	{
 	public:
+		String^ text;
+	public:
 		GameWindow(void)
 		{
 			InitializeComponent();
@@ -22,7 +25,11 @@ namespace Dylematwieznia {
 			//TODO: W tym miejscu dodaj kod konstruktora
 			//
 		}
-
+		GameWindow(String ^t)
+		{
+			InitializeComponent();
+			text = t;
+		}
 	protected:
 		/// <summary>
 		/// Wyczyœæ wszystkie u¿ywane zasoby.
@@ -34,10 +41,7 @@ namespace Dylematwieznia {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::SplitContainer^ splitContainer1;
-	protected:
-
-
+	private: System::Windows::Forms::Label^ label1;
 	protected:
 
 	private:
@@ -53,37 +57,34 @@ namespace Dylematwieznia {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(GameWindow::typeid));
-			this->splitContainer1 = (gcnew System::Windows::Forms::SplitContainer());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer1))->BeginInit();
-			this->splitContainer1->SuspendLayout();
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
-			// splitContainer1
+			// label1
 			// 
-			this->splitContainer1->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->splitContainer1->Location = System::Drawing::Point(0, 0);
-			this->splitContainer1->Name = L"splitContainer1";
-			this->splitContainer1->Size = System::Drawing::Size(792, 508);
-			this->splitContainer1->SplitterDistance = 264;
-			this->splitContainer1->TabIndex = 0;
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(35, 59);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(46, 17);
+			this->label1->TabIndex = 0;
+			this->label1->Text = L"label1";
 			// 
 			// GameWindow
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(792, 508);
-			this->Controls->Add(this->splitContainer1);
-			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->ClientSize = System::Drawing::Size(395, 320);
+			this->Controls->Add(this->label1);
 			this->Name = L"GameWindow";
 			this->Text = L"GameWindow";
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer1))->EndInit();
-			this->splitContainer1->ResumeLayout(false);
+			this->Load += gcnew System::EventHandler(this, &GameWindow::GameWindow_Load);
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
-	private: System::Void tableLayoutPanel1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+	private: System::Void GameWindow_Load(System::Object^ sender, System::EventArgs^ e) {
+		label1->Text = text;
 	}
 	};
 }
