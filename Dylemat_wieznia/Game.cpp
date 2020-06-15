@@ -15,8 +15,8 @@ void Game::startBoxes() {
 Game::Game()
 {
 	slots = 0;
-	Box* box1;
-	Box* box2;
+	Box* box1 = new Box();
+	Box* box2 = new Box();
 	boxes[0] = box1;
 	boxes[1] = box2;
 }
@@ -61,5 +61,5 @@ int Game::getRoundNumber()
 }
 
 bool Game::isEnded() {
-	return isEnded;
+	return gameEnded;
 }
