@@ -38,6 +38,12 @@ namespace Dylematwieznia {
 	protected:
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::NumericUpDown^ numericUpDown1;
+	private: System::Windows::Forms::Button^ Start;
+	private: System::Windows::Forms::Label^ label3;
+	private: System::Windows::Forms::TextBox^ textBox1;
+
+
+
 
 	protected:
 
@@ -80,51 +86,105 @@ namespace Dylematwieznia {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->numericUpDown1 = (gcnew System::Windows::Forms::NumericUpDown());
+			this->Start = (gcnew System::Windows::Forms::Button());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// label1
 			// 
-			this->label1->Anchor = System::Windows::Forms::AnchorStyles::Top;
-			this->label1->BackColor = System::Drawing::SystemColors::MenuHighlight;
-			this->label1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->label1->BackColor = System::Drawing::SystemColors::InfoText;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 25.8F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(238)));
+			this->label1->ForeColor = System::Drawing::Color::White;
 			this->label1->ImageAlign = System::Drawing::ContentAlignment::TopCenter;
-			this->label1->Location = System::Drawing::Point(242, 18);
-			this->label1->MaximumSize = System::Drawing::Size(400, 300);
+			this->label1->Location = System::Drawing::Point(247, -2);
+			this->label1->MaximumSize = System::Drawing::Size(500, 300);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(371, 60);
+			this->label1->Size = System::Drawing::Size(500, 60);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Dylemat WiêŸnia";
 			// 
 			// label2
 			// 
-			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(66, 176);
+			this->label2->BackColor = System::Drawing::SystemColors::ActiveCaption;
+			this->label2->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->label2->Location = System::Drawing::Point(366, 145);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(54, 17);
+			this->label2->Size = System::Drawing::Size(126, 42);
 			this->label2->TabIndex = 1;
-			this->label2->Text = L"Iteracje";
+			this->label2->Text = L"Iteracje:";
+			this->label2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// numericUpDown1
 			// 
-			this->numericUpDown1->Location = System::Drawing::Point(136, 175);
+			this->numericUpDown1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->numericUpDown1->Location = System::Drawing::Point(386, 190);
+			this->numericUpDown1->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 20, 0, 0, 0 });
+			this->numericUpDown1->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 0 });
 			this->numericUpDown1->Name = L"numericUpDown1";
-			this->numericUpDown1->Size = System::Drawing::Size(149, 22);
+			this->numericUpDown1->Size = System::Drawing::Size(92, 45);
 			this->numericUpDown1->TabIndex = 2;
+			this->numericUpDown1->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->numericUpDown1->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 0 });
+			// 
+			// Start
+			// 
+			this->Start->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->Start->Location = System::Drawing::Point(306, 402);
+			this->Start->Name = L"Start";
+			this->Start->Size = System::Drawing::Size(252, 67);
+			this->Start->TabIndex = 3;
+			this->Start->Text = L"Start";
+			this->Start->UseVisualStyleBackColor = true;
+			this->Start->Click += gcnew System::EventHandler(this, &MyForm::startClick);
+			// 
+			// label3
+			// 
+			this->label3->BackColor = System::Drawing::SystemColors::ActiveCaption;
+			this->label3->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->label3->Location = System::Drawing::Point(318, 238);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(221, 42);
+			this->label3->TabIndex = 4;
+			this->label3->Text = L"Nazwa Gracza:";
+			this->label3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// textBox1
+			// 
+			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->textBox1->Location = System::Drawing::Point(318, 292);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(221, 30);
+			this->textBox1->TabIndex = 5;
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::SystemColors::AppWorkspace;
+			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
+			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
+			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(860, 554);
+			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->label3);
+			this->Controls->Add(this->Start);
 			this->Controls->Add(this->numericUpDown1);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
+			this->DoubleBuffered = true;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::Fixed3D;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->MaximizeBox = false;
+			this->MinimizeBox = false;
 			this->Name = L"MyForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"MyForm";
@@ -134,8 +194,11 @@ namespace Dylematwieznia {
 
 		}
 #pragma endregion
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
+	
+private: System::Void startClick(System::Object^ sender, System::EventArgs^ e) {
 
-	};
+
+
+}
+};
 }

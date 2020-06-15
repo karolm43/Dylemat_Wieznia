@@ -1,7 +1,6 @@
-*.sln
+
 Debug/
-.vs/
+
 Dylemat_wieznia/Debug/
-*.vcxproj
-*.filters
-*.user
+
+
