@@ -205,9 +205,10 @@ private: System::Void start_Click(System::Object^ sender, System::EventArgs^ e) 
 
 
 	GameWindow ^f = gcnew GameWindow(textBox1->Text);
-	this->Hide();
+	Visible = false;
 	f->ShowDialog();
-	f->Show();
+	
+	MessageBox::Show("Wynik: 2525", "KONIEC GRY");
 }
 	  
 	   
