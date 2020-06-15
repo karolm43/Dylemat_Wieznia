@@ -12,6 +12,8 @@ namespace Dylematwieznia {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Globalization;
+	using namespace System::Text;
 
 	/// <summary>
 	/// Podsumowanie informacji o MyForm
@@ -200,18 +202,21 @@ namespace Dylematwieznia {
 		}
 #pragma endregion
 
-
+		
 private: System::Void start_Click(System::Object^ sender, System::EventArgs^ e) {
 
 
-	GameWindow ^f = gcnew GameWindow(textBox1->Text);
-	Visible = false;
-	f->ShowDialog();
+	GameWindow ^f = gcnew GameWindow(textBox1->Text->ToString(),numericUpDown1->Text);
 	
-	MessageBox::Show("Wynik: 2525", "KONIEC GRY");
+	f->Show();
+	
+	
+	
+
 }
 	  
-	   
+
 		  
+
 };
 }

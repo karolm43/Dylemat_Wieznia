@@ -1,6 +1,11 @@
 #pragma once
 
 #include <iostream>
+#include "Game.h"
+#include "User.h"
+#include "BasicBot.h"
+#include "Player.h"
+
 namespace Dylematwieznia {
 
 	using namespace System;
@@ -9,14 +14,17 @@ namespace Dylematwieznia {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Globalization;
+	using namespace System::Text;
 
 	/// <summary>
 	/// Podsumowanie informacji o GameWindow
 	/// </summary>
 	public ref class GameWindow : public System::Windows::Forms::Form
 	{
-	public:
-		String^ text;
+	private:
+		String^ nick;
+		String^ iter;
 	public:
 		GameWindow(void)
 		{
@@ -25,11 +33,13 @@ namespace Dylematwieznia {
 			//TODO: W tym miejscu dodaj kod konstruktora
 			//
 		}
-		GameWindow(String ^t)
+		GameWindow(String ^n,String ^i)
 		{
 			InitializeComponent();
-			text = t;
+			nick = n;
+			iter = i;
 		}
+		
 	protected:
 		/// <summary>
 		/// Wyczyœæ wszystkie u¿ywane zasoby.
@@ -86,11 +96,11 @@ namespace Dylematwieznia {
 			this->splitContainer1 = (gcnew System::Windows::Forms::SplitContainer());
 			this->Punkty = (gcnew System::Windows::Forms::ListBox());
 			this->Gracze = (gcnew System::Windows::Forms::ListBox());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->bot = (gcnew System::Windows::Forms::Label());
 			this->Nie = (gcnew System::Windows::Forms::Button());
 			this->Tak = (gcnew System::Windows::Forms::Button());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer1))->BeginInit();
 			this->splitContainer1->Panel1->SuspendLayout();
 			this->splitContainer1->Panel2->SuspendLayout();
@@ -143,6 +153,30 @@ namespace Dylematwieznia {
 			this->Gracze->Size = System::Drawing::Size(136, 633);
 			this->Gracze->TabIndex = 9;
 			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->BackColor = System::Drawing::Color::SpringGreen;
+			this->label2->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->label2->Location = System::Drawing::Point(372, 137);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(65, 39);
+			this->label2->TabIndex = 5;
+			this->label2->Text = L"NR";
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Arial", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->label1->Location = System::Drawing::Point(233, 138);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(133, 35);
+			this->label1->TabIndex = 4;
+			this->label1->Text = L"Runda #";
+			// 
 			// bot
 			// 
 			this->bot->AutoSize = true;
@@ -153,6 +187,7 @@ namespace Dylematwieznia {
 			this->bot->Size = System::Drawing::Size(222, 52);
 			this->bot->TabIndex = 3;
 			this->bot->Text = L"Nick Bota";
+			this->bot->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// Nie
 			// 
@@ -171,30 +206,7 @@ namespace Dylematwieznia {
 			this->Tak->TabIndex = 1;
 			this->Tak->Text = L"Zdradzam";
 			this->Tak->UseVisualStyleBackColor = true;
-			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Arial", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(238)));
-			this->label1->Location = System::Drawing::Point(243, 138);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(133, 35);
-			this->label1->TabIndex = 4;
-			this->label1->Text = L"Runda #";
-			// 
-			// label2
-			// 
-			this->label2->AutoSize = true;
-			this->label2->BackColor = System::Drawing::Color::SpringGreen;
-			this->label2->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(238)));
-			this->label2->Location = System::Drawing::Point(372, 137);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(65, 39);
-			this->label2->TabIndex = 5;
-			this->label2->Text = L"NR";
+			this->Tak->Click += gcnew System::EventHandler(this, &GameWindow::Tak_Click);
 			// 
 			// GameWindow
 			// 
@@ -218,12 +230,30 @@ namespace Dylematwieznia {
 
 		}
 #pragma endregion
+		
 	private: System::Void GameWindow_Load(System::Object^ sender, System::EventArgs^ e) {
-
+		
+		User user1;
+		Game game;
+		BasicBot bot1;
+		BasicBot bot2;
+		BasicBot bot3;
+		
+		game.setRounds(3);
+		game.addPlayer(&user1);
+		game.addPlayer(&bot1);
+		game.addPlayer(&bot2);
+		game.addPlayer(&bot3);
+		game.run();
+		game.startRound();
+		
 	}
 	
+		   
+private: System::Void Tak_Click(System::Object^ sender, System::EventArgs^ e) {
+	
 
-
+}
 
 };
 }

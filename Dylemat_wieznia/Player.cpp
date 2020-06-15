@@ -35,4 +35,7 @@ void Player::setDecision(Decision decision)
 {
 	this->decision = decision;
 }
+void Player::play()
+{
 
+}

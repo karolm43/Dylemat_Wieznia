@@ -9,7 +9,7 @@ Game::~Game()
 {
 
 }
-void Game::addPlayer(Player player)
+void Game::addPlayer(Player* player)
 {
 
 }
@@ -28,4 +28,5 @@ void Game::startRound()
 int Game::getRoundNumber()
 {
 
+	return 0;
 }

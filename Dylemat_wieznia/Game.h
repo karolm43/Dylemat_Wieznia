@@ -9,7 +9,7 @@ protected:
 public:
 	Game();
 	~Game();
-	void addPlayer(Player player);
+	void addPlayer(Player* player);
 	void setRounds(int rounds);
 	void run();
 	void startRound();
