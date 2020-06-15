@@ -101,6 +101,8 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies />
+      <EntryPointSymbol>main</EntryPointSymbol>
+      <SubSystem>Windows</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -121,6 +123,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BasicBot.cpp" />
+    <ClCompile Include="Box.cpp" />
+    <ClCompile Include="Decision.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameWindow.cpp" />
     <ClCompile Include="MyForm.cpp" />
@@ -129,12 +133,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BasicBot.h" />
+    <ClInclude Include="Box.h" />
+    <ClInclude Include="Decision.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameWindow.h">
-      <FileType>CppForm</FileType>
+      <FileType>CppHeader</FileType>
     </ClInclude>
     <ClInclude Include="MyForm.h">
-      <FileType>CppForm</FileType>
+      <FileType>CppHeader</FileType>
     </ClInclude>
     <ClInclude Include="Player.h" />
     <ClInclude Include="User.h" />
