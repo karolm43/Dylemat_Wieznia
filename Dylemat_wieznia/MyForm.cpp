@@ -12,5 +12,4 @@ int main(array <System::String^>^ args)
 	Application::SetCompatibleTextRenderingDefault(false);
 	Application::Run(gcnew MyForm());
 	return 0;
-
 }

@@ -231,7 +231,7 @@ namespace Dylematwieznia {
 		}
 #pragma endregion
 		
-	private: System::Void GameWindow_Load(System::Object^ sender, System::EventArgs^ e) {
+	public: System::Void GameWindow_Load(System::Object^ sender, System::EventArgs^ e) {
 		
 		User user1;
 		Game game;
