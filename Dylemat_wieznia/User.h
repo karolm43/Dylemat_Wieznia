@@ -3,6 +3,7 @@
 class User :
     public Player
 {
-    
+public:
+    virtual void play();
 };
 

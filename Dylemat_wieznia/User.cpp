@@ -1,6 +1,6 @@
 #include "User.h"
 
-void Player::play()
+void User::play()
 {
 
 }

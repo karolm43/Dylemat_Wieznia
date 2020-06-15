@@ -3,5 +3,7 @@
 class BasicBot :
     public Player
 {
+public:
+    virtual void play();
 };
 

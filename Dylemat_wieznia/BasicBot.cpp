@@ -1,7 +1,7 @@
 #include "BasicBot.h"
 
 
-void Player::play()
+void BasicBot::play()
 {
 
 }
