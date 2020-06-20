@@ -102,11 +102,11 @@ namespace Dylematwieznia {
 			// label1
 			// 
 			this->label1->BackColor = System::Drawing::SystemColors::InfoText;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 25.8F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(238)));
-			this->label1->ForeColor = System::Drawing::Color::White;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Arial Black", 28.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->label1->ForeColor = System::Drawing::Color::Yellow;
 			this->label1->ImageAlign = System::Drawing::ContentAlignment::TopCenter;
-			this->label1->Location = System::Drawing::Point(247, -2);
+			this->label1->Location = System::Drawing::Point(448, 9);
 			this->label1->MaximumSize = System::Drawing::Size(500, 300);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(500, 60);
@@ -119,7 +119,7 @@ namespace Dylematwieznia {
 			this->label2->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->label2->Location = System::Drawing::Point(366, 145);
+			this->label2->Location = System::Drawing::Point(609, 138);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(126, 42);
 			this->label2->TabIndex = 1;
@@ -130,7 +130,7 @@ namespace Dylematwieznia {
 			// 
 			this->numericUpDown1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->numericUpDown1->Location = System::Drawing::Point(386, 190);
+			this->numericUpDown1->Location = System::Drawing::Point(628, 197);
 			this->numericUpDown1->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 20, 0, 0, 0 });
 			this->numericUpDown1->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 0 });
 			this->numericUpDown1->Name = L"numericUpDown1";
@@ -141,14 +141,15 @@ namespace Dylematwieznia {
 			// 
 			// start
 			// 
+			this->start->BackColor = System::Drawing::Color::Yellow;
 			this->start->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->start->Location = System::Drawing::Point(306, 402);
+			this->start->Location = System::Drawing::Point(516, 572);
 			this->start->Name = L"start";
-			this->start->Size = System::Drawing::Size(252, 67);
+			this->start->Size = System::Drawing::Size(323, 67);
 			this->start->TabIndex = 3;
 			this->start->Text = L"Start";
-			this->start->UseVisualStyleBackColor = true;
+			this->start->UseVisualStyleBackColor = false;
 			this->start->Click += gcnew System::EventHandler(this, &MyForm::start_Click);
 			// 
 			// label3
@@ -157,7 +158,7 @@ namespace Dylematwieznia {
 			this->label3->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->label3->Location = System::Drawing::Point(318, 238);
+			this->label3->Location = System::Drawing::Point(565, 256);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(221, 42);
 			this->label3->TabIndex = 4;
@@ -166,11 +167,11 @@ namespace Dylematwieznia {
 			// 
 			// textBox1
 			// 
-			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->textBox1->Location = System::Drawing::Point(318, 292);
+			this->textBox1->Location = System::Drawing::Point(510, 301);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(221, 30);
+			this->textBox1->Size = System::Drawing::Size(329, 45);
 			this->textBox1->TabIndex = 5;
 			// 
 			// MyForm
@@ -180,7 +181,7 @@ namespace Dylematwieznia {
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(860, 554);
+			this->ClientSize = System::Drawing::Size(1354, 783);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->start);
@@ -206,7 +207,7 @@ namespace Dylematwieznia {
 private: System::Void start_Click(System::Object^ sender, System::EventArgs^ e) {
 
 
-	GameWindow ^f = gcnew GameWindow(textBox1->Text->ToString(),numericUpDown1->Text);
+	GameWindow ^f = gcnew GameWindow(textBox1->Text->ToString(),numericUpDown1->Text->ToString());
 	
 	f->Show();
 	
