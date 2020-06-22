@@ -49,3 +49,8 @@ void Player::setImagePath(std::string path)
 void Player::play()
 {
 }
+
+Player::~Player()
+{
+
+}

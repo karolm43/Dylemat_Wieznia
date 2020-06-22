@@ -24,5 +24,6 @@ public:
 	void setDecision(Decision decision);
 	void setImagePath(std::string path);
 	virtual void play() = 0;
+	virtual ~Player();
 };
 

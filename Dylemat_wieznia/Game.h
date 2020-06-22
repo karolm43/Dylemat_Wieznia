@@ -27,5 +27,6 @@ public:
 	int getRoundNumber();
 	Player* getEnemy(Player* player);
 	bool isEnded();
+	~Game();
 };
 

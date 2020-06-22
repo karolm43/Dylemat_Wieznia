@@ -81,3 +81,8 @@ int Game::getRoundNumber()
 bool Game::isEnded() {
 	return gameEnded;
 }
+
+Game::~Game()
+{
+
+}
