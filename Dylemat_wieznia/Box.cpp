@@ -24,10 +24,10 @@ Player* Box::getPlayer2()
 
 bool Box::isInBox(Player* player)
 {
-	if (&player == &player1) {
+	if (player == player1) {
 		return true;
 	}
-	else if (&player == &player2) {
+	else if (player == player2) {
 		return true;
 	}
 	else {
@@ -37,7 +37,7 @@ bool Box::isInBox(Player* player)
 
 Player* Box::getEnemy(Player* player)
 {
-	if (&player == &player1) {
+	if (player == player1) {
 		return player2;
 	}
 	else {

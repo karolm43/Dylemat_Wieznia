@@ -11,5 +11,6 @@ void BasicBot::play()
 BasicBot::BasicBot()
 {
 	setPoints(0);
+	setLastPoints(0);
 	setImagePath("LADY");
 }
