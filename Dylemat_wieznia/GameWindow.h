@@ -35,6 +35,8 @@ namespace Dylematwieznia {
 	private:
 		
 		
+
+	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::PictureBox^ Picture;
 
 	private: System::Windows::Forms::Label^ label3;
@@ -121,13 +123,14 @@ namespace Dylematwieznia {
 			this->splitContainer1 = (gcnew System::Windows::Forms::SplitContainer());
 			this->Points = (gcnew System::Windows::Forms::ListBox());
 			this->Players = (gcnew System::Windows::Forms::ListBox());
-			this->Picture = (gcnew System::Windows::Forms::PictureBox());
+			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->Rounds = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->bot = (gcnew System::Windows::Forms::Label());
 			this->Nie = (gcnew System::Windows::Forms::Button());
 			this->Tak = (gcnew System::Windows::Forms::Button());
+			this->Picture = (gcnew System::Windows::Forms::PictureBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer1))->BeginInit();
 			this->splitContainer1->Panel1->SuspendLayout();
 			this->splitContainer1->Panel2->SuspendLayout();
@@ -150,6 +153,7 @@ namespace Dylematwieznia {
 			// splitContainer1.Panel2
 			// 
 			this->splitContainer1->Panel2->BackColor = System::Drawing::Color::SteelBlue;
+			this->splitContainer1->Panel2->Controls->Add(this->label2);
 			this->splitContainer1->Panel2->Controls->Add(this->Picture);
 			this->splitContainer1->Panel2->Controls->Add(this->label3);
 			this->splitContainer1->Panel2->Controls->Add(this->Rounds);
@@ -188,24 +192,24 @@ namespace Dylematwieznia {
 			this->Players->Size = System::Drawing::Size(189, 791);
 			this->Players->TabIndex = 9;
 			// 
-			// Picture
+			// label2
 			// 
-			this->Picture->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
-			this->Picture->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->Picture->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Picture.Image")));
-			this->Picture->Location = System::Drawing::Point(297, 3);
-			this->Picture->Name = L"Picture";
-			this->Picture->Size = System::Drawing::Size(534, 249);
-			this->Picture->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-			this->Picture->TabIndex = 7;
-			this->Picture->TabStop = false;
+			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Arial Black", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->label2->ForeColor = System::Drawing::Color::Maroon;
+			this->label2->Location = System::Drawing::Point(379, 47);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(343, 40);
+			this->label2->TabIndex = 8;
+			this->label2->Text = L"TWÓJ PRZECIWNIK !!";
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Arial", 12, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(238)));
-			this->label3->Location = System::Drawing::Point(380, 501);
+			this->label3->Location = System::Drawing::Point(382, 599);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(361, 24);
 			this->label3->TabIndex = 6;
@@ -218,7 +222,7 @@ namespace Dylematwieznia {
 			this->Rounds->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->Rounds->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->Rounds->Location = System::Drawing::Point(593, 293);
+			this->Rounds->Location = System::Drawing::Point(584, 384);
 			this->Rounds->Name = L"Rounds";
 			this->Rounds->Size = System::Drawing::Size(65, 39);
 			this->Rounds->TabIndex = 5;
@@ -229,7 +233,7 @@ namespace Dylematwieznia {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Arial", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->label1->Location = System::Drawing::Point(454, 294);
+			this->label1->Location = System::Drawing::Point(445, 385);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(133, 35);
 			this->label1->TabIndex = 4;
@@ -240,7 +244,7 @@ namespace Dylematwieznia {
 			this->bot->AutoSize = true;
 			this->bot->Font = (gcnew System::Drawing::Font(L"Arial Black", 22, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->bot->Location = System::Drawing::Point(451, 382);
+			this->bot->Location = System::Drawing::Point(442, 482);
 			this->bot->Name = L"bot";
 			this->bot->Size = System::Drawing::Size(222, 52);
 			this->bot->TabIndex = 3;
@@ -251,9 +255,10 @@ namespace Dylematwieznia {
 			// 
 			this->Nie->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
 				static_cast<System::Int32>(static_cast<System::Byte>(128)));
+			this->Nie->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Nie->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->Nie->Location = System::Drawing::Point(733, 563);
+			this->Nie->Location = System::Drawing::Point(735, 661);
 			this->Nie->Name = L"Nie";
 			this->Nie->Size = System::Drawing::Size(200, 100);
 			this->Nie->TabIndex = 2;
@@ -268,13 +273,24 @@ namespace Dylematwieznia {
 			this->Tak->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Tak->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->Tak->Location = System::Drawing::Point(209, 563);
+			this->Tak->Location = System::Drawing::Point(211, 661);
 			this->Tak->Name = L"Tak";
 			this->Tak->Size = System::Drawing::Size(200, 100);
 			this->Tak->TabIndex = 1;
 			this->Tak->Text = L"Zdradzam";
 			this->Tak->UseVisualStyleBackColor = false;
 			this->Tak->Click += gcnew System::EventHandler(this, &GameWindow::Tak_Click);
+			// 
+			// Picture
+			// 
+			this->Picture->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
+			this->Picture->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Picture.Image")));
+			this->Picture->Location = System::Drawing::Point(278, 90);
+			this->Picture->Name = L"Picture";
+			this->Picture->Size = System::Drawing::Size(534, 292);
+			this->Picture->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->Picture->TabIndex = 7;
+			this->Picture->TabStop = false;
 			// 
 			// GameWindow
 			// 
@@ -312,7 +328,7 @@ namespace Dylematwieznia {
 	
 		  
 private: System::Void Tak_Click(System::Object^ sender, System::EventArgs^ e) {
-	//yes();
+	yes();
 	Update();
 }
 
@@ -321,7 +337,7 @@ private: System::Void Nie_Click(System::Object^ sender, System::EventArgs^ e) {
 	
 
 	no();
-
+	Update();
 
 	
 }

@@ -23,9 +23,9 @@ namespace Dylematwieznia
 		players[2] = &bot2;
 		players[3] = &bot3;
 
-		players[1]->setName("BOT_Marcin");
-		players[2]->setName("BOT_Marcin1");
-		players[3]->setName("BOT_Marcin2");
+		players[1]->setName("BOT_SOBOTA");
+		players[2]->setName("BOT_NIEDZIELA");
+		players[3]->setName("BOT_PONIEDZIALEK");
 
 
 		game.addPlayer(&user1);
@@ -44,7 +44,9 @@ namespace Dylematwieznia
 ;		//game.
 		game.run();
 		game.startRound();
-
+		Player* enemy = game.getEnemy(&user1);
+		Picture->ImageLocation = msclr::interop::marshal_as<System::String^>(enemy->getImagePath());
+		bot->Text = msclr::interop::marshal_as<System::String^>(enemy->getName());
 		
 		Rounds->Text = msclr::interop::marshal_as<System::String^>(std::to_string(game.getRoundNumber()));
 		
@@ -58,6 +60,7 @@ namespace Dylematwieznia
 		game.startRound();
 		Points->Items->Clear();
 		Points->Items->Add("Punkty:");
+		bot->Text = msclr::interop::marshal_as<System::String^>(game.getEnemy(&user1)->getName());
 		for (int i = 0; i < 4; i++)
 		{
 
@@ -68,9 +71,25 @@ namespace Dylematwieznia
 		
 		if (game.isEnded())
 		{
-			string text = "Liczba punktów: "+std::to_string(user1.getPoints());
+			string text =
+				user1.getName()+" Liczba punktów: "+std::to_string(user1.getPoints())
+				+"\n"+bot1.getName()+" Punkty: "+ std::to_string(bot1.getPoints())
+				+"\n" + bot2.getName() + " Punkty: " + std::to_string(bot2.getPoints())
+				+ "\n" + bot3.getName() + " Punkty: " + std::to_string(bot3.getPoints());
 			MessageBox::Show(msclr::interop::marshal_as<System::String^>(text),"KONIEC GRY");
+			
+			bot1.setPoints(0);
+			bot2.setPoints(0);
+			bot3.setPoints(0);
+			bot1.setLastPoints(0);
+			bot2.setLastPoints(0);
+			bot3.setLastPoints(0);
+			user1.setPoints(0);
+			user1.setLastPoints(0);
+			
+			
 			Form::Close();
+			
 			
 		}
 	}

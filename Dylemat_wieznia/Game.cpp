@@ -20,10 +20,7 @@ Game::Game()
 	boxes[0] = box1;
 	boxes[1] = box2;
 }
-Game::~Game()
-{
 
-}
 void Game::addPlayer(Player* player)
 {
 	if (slots < MAX_PLAYER) {

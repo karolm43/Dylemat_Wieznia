@@ -18,7 +18,7 @@ protected:
 
 public:
 	Game();
-	~Game();
+	
 	void addPlayer(Player* player);
 	void addPlayers(Player* players[]);
 	void setRounds(int rounds);
