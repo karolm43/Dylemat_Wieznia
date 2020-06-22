@@ -15,8 +15,8 @@ void Box::setPlayer2(Player* player)
 }
 void Box::result()
 {
-	player1->setLastPoints(player1 == player2);
-	player2->setLastPoints(player2 == player1);
+	player1->setLastPoints(player1->getDecision() == player2->getDecision());
+	player2->setLastPoints(player2->getDecision() == player1->getDecision());
 }
 
 Box::Box()

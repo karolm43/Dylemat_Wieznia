@@ -48,6 +48,7 @@ namespace Dylematwieznia {
 
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::TextBox^ textBox1;
+	private: System::Windows::Forms::Button^ button1;
 
 
 
@@ -96,6 +97,7 @@ namespace Dylematwieznia {
 			this->start = (gcnew System::Windows::Forms::Button());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -142,6 +144,7 @@ namespace Dylematwieznia {
 			// start
 			// 
 			this->start->BackColor = System::Drawing::Color::Yellow;
+			this->start->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->start->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->start->Location = System::Drawing::Point(516, 572);
@@ -174,6 +177,19 @@ namespace Dylematwieznia {
 			this->textBox1->Size = System::Drawing::Size(329, 45);
 			this->textBox1->TabIndex = 5;
 			// 
+			// button1
+			// 
+			this->button1->BackColor = System::Drawing::Color::Yellow;
+			this->button1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.BackgroundImage")));
+			this->button1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->button1->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->button1->Location = System::Drawing::Point(1190, 625);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(164, 158);
+			this->button1->TabIndex = 6;
+			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -182,6 +198,7 @@ namespace Dylematwieznia {
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(1354, 783);
+			this->Controls->Add(this->button1);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->start);
@@ -219,5 +236,8 @@ private: System::Void start_Click(System::Object^ sender, System::EventArgs^ e) 
 
 		  
 
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	System::Diagnostics::Process::Start("pomoc.pdf");
+}
 };
 }

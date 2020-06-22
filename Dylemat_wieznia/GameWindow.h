@@ -312,7 +312,7 @@ namespace Dylematwieznia {
 	
 		  
 private: System::Void Tak_Click(System::Object^ sender, System::EventArgs^ e) {
-	yes();
+	//yes();
 	Update();
 }
 

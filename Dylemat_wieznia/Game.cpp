@@ -36,11 +36,11 @@ void Game::setRounds(int rounds)
 }
 void Game::run()
 {
-	actualRound = 1;
+	actualRound = 0;
 }
 void Game::startRound()
 {
-	if (actualRound > rounds) {
+	if (actualRound < rounds) {
 		int n = actualRound % 4;
 
 		boxes[0]->setPlayer1(players[n]);

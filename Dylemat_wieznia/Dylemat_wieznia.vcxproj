@@ -137,10 +137,10 @@
     <ClInclude Include="Decision.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameWindow.h">
-      <FileType>CppHeader</FileType>
+      <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="MyForm.h">
-      <FileType>CppHeader</FileType>
+      <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Player.h" />
     <ClInclude Include="User.h" />

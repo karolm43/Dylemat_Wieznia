@@ -1,11 +1,14 @@
 #include "GameWindow.h"
+#include "Myform.h"
 
 using namespace std;
 
 User user1;
 Game game;
 Player* players[4];
-
+BasicBot bot1;
+BasicBot bot2;
+BasicBot bot3;
 namespace Dylematwieznia
 {
 	
@@ -14,13 +17,17 @@ namespace Dylematwieznia
 		
 		game.setRounds(rounds);
 		user1.setName(nick);
-		BasicBot bot1;
-		BasicBot bot2;
-		BasicBot bot3;
+		
 		players[0] = &user1;
 		players[1] = &bot1;
 		players[2] = &bot2;
 		players[3] = &bot3;
+
+		players[1]->setName("BOT_Marcin");
+		players[2]->setName("BOT_Marcin1");
+		players[3]->setName("BOT_Marcin2");
+
+
 		game.addPlayer(&user1);
 		game.addPlayer(&bot1);
 		game.addPlayer(&bot2);
@@ -35,10 +42,12 @@ namespace Dylematwieznia
 			Points->Items->Add(players[i]->getLastPoints());
 		}
 ;		//game.
-		string nr;
-		nr = game.getRoundNumber();
-		Rounds->Text = msclr::interop::marshal_as<System::String^>(nr);
+		game.run();
 		game.startRound();
+
+		
+		Rounds->Text = msclr::interop::marshal_as<System::String^>(std::to_string(game.getRoundNumber()));
+		
 	}
 
 
@@ -46,6 +55,7 @@ namespace Dylematwieznia
 
 	void GameWindow::Update()
 	{
+		game.startRound();
 		Points->Items->Clear();
 		Points->Items->Add("Punkty:");
 		for (int i = 0; i < 4; i++)
@@ -53,12 +63,14 @@ namespace Dylematwieznia
 
 			Points->Items->Add(players[i]->getLastPoints());
 		}
-		string nr;
-		nr = game.getRoundNumber();
-		Rounds->Text = msclr::interop::marshal_as<System::String^>(nr);
+		
+		Rounds->Text = msclr::interop::marshal_as<System::String^>(std::to_string(game.getRoundNumber()));
+		
 		if (game.isEnded())
 		{
-			//messegebox
+			MessageBox::Show("test");
+			Form::Close();
+			
 		}
 	}
 	void GameWindow::yes()
