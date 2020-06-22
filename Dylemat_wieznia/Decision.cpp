@@ -12,8 +12,8 @@ int Decision::operator==(const Decision& d) {
 		return 6;
 	}
 	else if (d.decision) {
-		return 10;
-	} else {
 		return 0;
+	} else {
+		return 10;
 	}
 }
