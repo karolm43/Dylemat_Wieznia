@@ -68,7 +68,8 @@ namespace Dylematwieznia
 		
 		if (game.isEnded())
 		{
-			MessageBox::Show("test");
+			string text = "Liczba punktów: "+std::to_string(user1.getPoints());
+			MessageBox::Show(msclr::interop::marshal_as<System::String^>(text),"KONIEC GRY");
 			Form::Close();
 			
 		}

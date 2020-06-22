@@ -239,5 +239,6 @@ private: System::Void start_Click(System::Object^ sender, System::EventArgs^ e) 
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	System::Diagnostics::Process::Start("pomoc.pdf");
 }
+
 };
 }

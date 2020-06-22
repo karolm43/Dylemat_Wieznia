@@ -36,6 +36,7 @@ void Game::setRounds(int rounds)
 }
 void Game::run()
 {
+	gameEnded = false;
 	actualRound = 0;
 }
 void Game::startRound()
