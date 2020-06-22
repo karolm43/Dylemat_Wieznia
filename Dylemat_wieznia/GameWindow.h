@@ -1,3 +1,4 @@
+
 #pragma once
 #include <typeinfo>
 #include <iostream>
@@ -5,12 +6,16 @@
 #include "User.h"
 #include "BasicBot.h"
 #include "Player.h"
-#include <string>
+#include "Decision.h"
+
 #include <cstdlib>
+#include <msclr/marshal_cppstd.h>
+#include <string.h>
+#include <stdlib.h>
 
 
 namespace Dylematwieznia {
-
+	
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -23,16 +28,18 @@ namespace Dylematwieznia {
 	/// <summary>
 	/// Podsumowanie informacji o GameWindow
 	/// </summary>
+
 	public ref class GameWindow : public System::Windows::Forms::Form
 	{
 		
 	private:
-		String^ nick;
-
+		
+		
 	private: System::Windows::Forms::PictureBox^ Picture;
 
 	private: System::Windows::Forms::Label^ label3;
-		   String^ iter;
+		  
+		   
 	public:
 		GameWindow(void)
 		{
@@ -41,12 +48,19 @@ namespace Dylematwieznia {
 			//TODO: W tym miejscu dodaj kod konstruktora
 			//
 		}
-		GameWindow(String ^n,String ^i)
+		GameWindow(String^ n, String^ i)
 		{
 			InitializeComponent();
-			nick = n;
-			iter = i;
+			
+			int rounds;
+			std::string nick;
+			nick = msclr::interop::marshal_as< std::string >(n);
+			rounds = Int32::Parse(i);
+			beginGame(nick, rounds);
+			
 		}
+
+		
 		
 	protected:
 		/// <summary>
@@ -82,8 +96,9 @@ namespace Dylematwieznia {
 
 
 	private: System::Windows::Forms::Label^ bot;
-	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Label^ Rounds;
+
+	public: System::Windows::Forms::Label^ label1;
 
 
 
@@ -102,23 +117,13 @@ namespace Dylematwieznia {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-
-
-
-
-
-
-
-
-
-
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(GameWindow::typeid));
 			this->splitContainer1 = (gcnew System::Windows::Forms::SplitContainer());
 			this->Points = (gcnew System::Windows::Forms::ListBox());
 			this->Players = (gcnew System::Windows::Forms::ListBox());
 			this->Picture = (gcnew System::Windows::Forms::PictureBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->Rounds = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->bot = (gcnew System::Windows::Forms::Label());
 			this->Nie = (gcnew System::Windows::Forms::Button());
@@ -147,7 +152,7 @@ namespace Dylematwieznia {
 			this->splitContainer1->Panel2->BackColor = System::Drawing::Color::SteelBlue;
 			this->splitContainer1->Panel2->Controls->Add(this->Picture);
 			this->splitContainer1->Panel2->Controls->Add(this->label3);
-			this->splitContainer1->Panel2->Controls->Add(this->label2);
+			this->splitContainer1->Panel2->Controls->Add(this->Rounds);
 			this->splitContainer1->Panel2->Controls->Add(this->label1);
 			this->splitContainer1->Panel2->Controls->Add(this->bot);
 			this->splitContainer1->Panel2->Controls->Add(this->Nie);
@@ -178,7 +183,6 @@ namespace Dylematwieznia {
 				| System::Drawing::FontStyle::Underline)), System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(238)));
 			this->Players->FormattingEnabled = true;
 			this->Players->ItemHeight = 21;
-			this->Players->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"Gracze:" });
 			this->Players->Location = System::Drawing::Point(0, 0);
 			this->Players->Name = L"Players";
 			this->Players->Size = System::Drawing::Size(189, 791);
@@ -207,18 +211,18 @@ namespace Dylematwieznia {
 			this->label3->TabIndex = 6;
 			this->label3->Text = L"Czy zdradzasz swojego przeciwnika\?";
 			// 
-			// label2
+			// Rounds
 			// 
-			this->label2->AutoSize = true;
-			this->label2->BackColor = System::Drawing::Color::Yellow;
-			this->label2->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->Rounds->AutoSize = true;
+			this->Rounds->BackColor = System::Drawing::Color::Yellow;
+			this->Rounds->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->Rounds->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->label2->Location = System::Drawing::Point(593, 293);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(65, 39);
-			this->label2->TabIndex = 5;
-			this->label2->Text = L"NR";
+			this->Rounds->Location = System::Drawing::Point(593, 293);
+			this->Rounds->Name = L"Rounds";
+			this->Rounds->Size = System::Drawing::Size(65, 39);
+			this->Rounds->TabIndex = 5;
+			this->Rounds->Text = L"NR";
 			// 
 			// label1
 			// 
@@ -299,41 +303,41 @@ namespace Dylematwieznia {
 		
 	public: System::Void GameWindow_Load(System::Object^ sender, System::EventArgs^ e) {
 		
-		int i = Int32::Parse(iter);
-		User user1;
-		Game game;
-		BasicBot bot1;
-		BasicBot bot2;
-		BasicBot bot3;
-		game.setRounds(3);
-		game.addPlayer(&user1);
-		game.addPlayer(&bot1);
-		game.addPlayer(&bot2);
-		game.addPlayer(&bot3);
-		user1.setName("test");
 		
-		game.run();
-		game.startRound();
-
-
-		MessageBox::Show("test");
+		
+		
+		
 		
 	}
 	
 		  
 private: System::Void Tak_Click(System::Object^ sender, System::EventArgs^ e) {
-	
-	this->Controls->Clear();
-	Visible = false;
-	InitializeComponent();
-	GameWindow_Load(e, e);
-	Visible = true;
-	
+	yes();
+	Update();
 }
 
 	    
 private: System::Void Nie_Click(System::Object^ sender, System::EventArgs^ e) {
+	
+
+	no();
+
+
+	
 }
+	
+	  
+
+	   void beginGame(std::string nick, int rounds);
+
+	   void Update();
+
+	   void yes();
+
+	   void no();
+
+	  
+
 };
 
 }
