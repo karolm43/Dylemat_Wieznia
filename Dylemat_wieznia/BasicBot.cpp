@@ -9,4 +9,7 @@ void BasicBot::play()
 }
 
 BasicBot::BasicBot()
-{}
+{
+	setPoints(0);
+	setImagePath("LADY");
+}

@@ -8,6 +8,7 @@ private:
 	int points;
 	int lastPoints;
 	Decision decision;
+	std::string imagePath;
 protected:
 
 public:
@@ -15,11 +16,13 @@ public:
 	int getLastPoints();
 	std::string getName();
 	Decision getDecision();
+	std::string getImagePath();
 
 	void setPoints(int points);
 	void setLastPoints(int points);
 	void setName(std::string name);
 	void setDecision(Decision decision);
+	void setImagePath(std::string path);
 	virtual void play() = 0;
 };
 

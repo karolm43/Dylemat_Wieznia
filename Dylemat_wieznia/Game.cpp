@@ -45,8 +45,11 @@ void Game::startRound()
 		int n = actualRound % 4;
 
 		boxes[0]->setPlayer1(players[n]);
+
 		boxes[0]->setPlayer2(players[(n + 1) % 4]);
+
 		boxes[1]->setPlayer1(players[(n + 2) % 4]);
+
 		boxes[1]->setPlayer2(players[(n + 3) % 4]);
 
 		startBoxes();
@@ -56,6 +59,20 @@ void Game::startRound()
 		gameEnded = true;
 	}
 }
+
+
+
+Player* Game::getEnemy(Player* player)
+{
+	for each (Box* box in boxes)
+	{
+		if (box->isInBox(player)) {
+			return box->getEnemy(player);
+		}
+	}
+	return player;
+}
+
 int Game::getRoundNumber()
 {
 	return actualRound;

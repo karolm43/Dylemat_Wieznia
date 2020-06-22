@@ -20,10 +20,12 @@ public:
 	Game();
 	~Game();
 	void addPlayer(Player* player);
+	void addPlayers(Player* players[]);
 	void setRounds(int rounds);
 	void run();
 	void startRound();
 	int getRoundNumber();
+	Player* getEnemy(Player* player);
 	bool isEnded();
 };
 
