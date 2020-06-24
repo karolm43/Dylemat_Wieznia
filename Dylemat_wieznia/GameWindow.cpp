@@ -57,18 +57,6 @@ namespace Dylematwieznia
 
 	void GameWindow::Update()
 	{
-		game.startRound();
-		Points->Items->Clear();
-		Points->Items->Add("Punkty:");
-		bot->Text = msclr::interop::marshal_as<System::String^>(game.getEnemy(&user1)->getName());
-		for (int i = 0; i < 4; i++)
-		{
-
-			Points->Items->Add(players[i]->getLastPoints());
-		}
-		
-		Rounds->Text = msclr::interop::marshal_as<System::String^>(std::to_string(game.getRoundNumber()));
-		
 		if (game.isEnded())
 		{
 			string text =
@@ -89,7 +77,20 @@ namespace Dylematwieznia
 			
 			
 			Form::Close();
-			
+		}
+		else {
+			game.startRound();
+			Points->Items->Clear();
+			Points->Items->Add("Punkty:");
+			bot->Text = msclr::interop::marshal_as<System::String^>(game.getEnemy(&user1)->getName());
+			for (int i = 0; i < 4; i++)
+			{
+
+				Points->Items->Add(players[i]->getLastPoints());
+			}
+
+			Rounds->Text = msclr::interop::marshal_as<System::String^>(std::to_string(game.getRoundNumber()));
+
 			
 		}
 	}
@@ -98,12 +99,13 @@ namespace Dylematwieznia
 		Decision decision;
 		decision.setDecision(true);
 		user1.setDecision(decision);
-
+		game.endRound();
 	}
 	void GameWindow::no()
 	{
 		Decision decision;
 		decision.setDecision(false);
 		user1.setDecision(decision);
+		game.endRound();
 	}
 }

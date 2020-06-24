@@ -15,7 +15,7 @@
 
 
 namespace Dylematwieznia {
-	
+
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -31,92 +31,37 @@ namespace Dylematwieznia {
 
 	public ref class GameWindow : public System::Windows::Forms::Form
 	{
-		
-	private:
-		
-		
+	private: 
+		System::Windows::Forms::Label^ label2;
+		System::Windows::Forms::PictureBox^ Picture;
+		System::Windows::Forms::Label^ label3;
+		System::Windows::Forms::SplitContainer^ splitContainer1;
+		System::Windows::Forms::Button^ Nie;
+		System::Windows::Forms::Button^ Tak;
+		System::Windows::Forms::ListBox^ Players;
+		System::Windows::Forms::ListBox^ Points;
+		System::Windows::Forms::Label^ bot;
+		System::Windows::Forms::Label^ Rounds;
 
-	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::PictureBox^ Picture;
-
-	private: System::Windows::Forms::Label^ label3;
-		  
-		   
-	public:
-		GameWindow(void)
-		{
-			InitializeComponent();
-			//
-			//TODO: W tym miejscu dodaj kod konstruktora
-			//
-		}
-		GameWindow(String^ n, String^ i)
-		{
-			InitializeComponent();
-			
-			int rounds;
-			std::string nick;
-			nick = msclr::interop::marshal_as< std::string >(n);
-			rounds = Int32::Parse(i);
-			beginGame(nick, rounds);
-			
+		System::Void Tak_Click(System::Object^ sender, System::EventArgs^ e) {
+			yes();
+			Update();
 		}
 
-		
-		
-	protected:
-		/// <summary>
-		/// Wyczyœæ wszystkie u¿ywane zasoby.
-		/// </summary>
-		~GameWindow()
-		{
-			if (components)
-			{
-				delete components;
-			}
+		System::Void Nie_Click(System::Object^ sender, System::EventArgs^ e) {
+			no();
+			Update();
 		}
-	private: System::Windows::Forms::SplitContainer^ splitContainer1;
-	private: System::Windows::Forms::Button^ Nie;
-	protected:
+
+		void beginGame(std::string nick, int rounds);
+		void Update();
+		void yes();
+		void no();
 
 
+		System::ComponentModel::Container^ components;
 
-
-
-
-
-
-
-	private: System::Windows::Forms::Button^ Tak;
-	private: System::Windows::Forms::ListBox^ Players;
-	private: System::Windows::Forms::ListBox^ Points;
-
-
-
-
-
-
-
-	private: System::Windows::Forms::Label^ bot;
-	private: System::Windows::Forms::Label^ Rounds;
-
-	public: System::Windows::Forms::Label^ label1;
-
-
-
-	protected:
-
-	private:
-		/// <summary>
-		/// Wymagana zmienna projektanta.
-		/// </summary>
-		System::ComponentModel::Container ^components;
-
-#pragma region Windows Form Designer generated code
-		/// <summary>
-		/// Metoda wymagana do obs³ugi projektanta — nie nale¿y modyfikowaæ
-		/// jej zawartoœci w edytorze kodu.
-		/// </summary>
+		#pragma region Windows Form Designer generated code
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(GameWindow::typeid));
@@ -315,45 +260,43 @@ namespace Dylematwieznia {
 
 		}
 
-#pragma endregion
-		
-	public: System::Void GameWindow_Load(System::Object^ sender, System::EventArgs^ e) {
-		
-		
-		
-		
-		
-		
-	}
-	
-		  
-private: System::Void Tak_Click(System::Object^ sender, System::EventArgs^ e) {
-	yes();
-	Update();
-}
 
-	    
-private: System::Void Nie_Click(System::Object^ sender, System::EventArgs^ e) {
-	
+	protected:
+		/// <summary>
+		/// Wyczyœæ wszystkie u¿ywane zasoby.
+		/// </summary>
+		~GameWindow()
+		{
+			if (components)
+			{
+				delete components;
+			}
+		}
 
-	no();
-	Update();
 
-	
-}
-	
-	  
+	public:
+		GameWindow(void)
+		{
+			InitializeComponent();
+		}
+		GameWindow(String^ n, String^ i)
+		{
+			InitializeComponent();
 
-	   void beginGame(std::string nick, int rounds);
+			int rounds;
+			std::string nick;
+			nick = msclr::interop::marshal_as< std::string >(n);
+			rounds = Int32::Parse(i);
+			beginGame(nick, rounds);
 
-	   void Update();
+		}
 
-	   void yes();
 
-	   void no();
+		System::Windows::Forms::Label^ label1;
 
-	  
+		#pragma endregion
+		System::Void GameWindow_Load(System::Object^ sender, System::EventArgs^ e) {
 
-};
-
+		}
+	};
 }

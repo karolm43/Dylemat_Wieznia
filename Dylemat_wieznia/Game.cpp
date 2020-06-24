@@ -5,9 +5,17 @@ void Game::startBoxes() {
 	{
 		boxes[i]->start();
 	}
-	for (int i = 0; i < MAX_PLAYER / 2; i++)
-	{
-		boxes[i]->result();
+}
+
+int Game::formatNumber(int n, int operation) {
+	if ((n + operation)% MAX_PLAYER == 0 && operation < 0) {
+		return (MAX_PLAYER-1);
+	}
+	else if ((n + operation) % MAX_PLAYER == 0) {
+		return 1;
+	}
+	else {
+		return ((n + operation) % MAX_PLAYER);
 	}
 }
 
@@ -34,27 +42,42 @@ void Game::setRounds(int rounds)
 void Game::run()
 {
 	gameEnded = false;
-	actualRound = 0;
+	roundEnded = true;
+	actualRound = 1;
 }
 void Game::startRound()
 {
-	if (actualRound < rounds) {
-		int n = actualRound % 4;
+	if (roundEnded && (actualRound <= rounds)) {
+		int n = actualRound % (MAX_PLAYER - 1) + 1;
 
-		boxes[0]->setPlayer1(players[n]);
+		boxes[0]->setPlayer1(players[0]);
 
-		boxes[0]->setPlayer2(players[(n + 1) % 4]);
+		boxes[0]->setPlayer2(players[n]);
 
-		boxes[1]->setPlayer1(players[(n + 2) % 4]);
+		boxes[1]->setPlayer1(players[formatNumber(n, -1)]);
 
-		boxes[1]->setPlayer2(players[(n + 3) % 4]);
+		boxes[1]->setPlayer2(players[formatNumber(n, 1)]);
+
+		roundEnded = false;
+		startBoxes();
+	}
+}
+
+void Game::endRound()
+{
+	if (!roundEnded) {
+		for (int i = 0; i < MAX_PLAYER / 2; i++)
+		{
+			boxes[i]->result();
+		}
 
 		startBoxes();
 		actualRound++;
 	}
-	else {
+	if (actualRound > rounds) {
 		gameEnded = true;
 	}
+	roundEnded = true;
 }
 
 

@@ -41,28 +41,13 @@ namespace Dylematwieznia {
 			}
 		}
 	private: System::Windows::Forms::Label^ label1;
-	protected:
-	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::NumericUpDown^ numericUpDown1;
-	private: System::Windows::Forms::Button^ start;
+		System::Windows::Forms::Label^ label2;
+		System::Windows::Forms::NumericUpDown^ numericUpDown1;
+		System::Windows::Forms::Button^ start;
 
-	private: System::Windows::Forms::Label^ label3;
-	private: System::Windows::Forms::TextBox^ textBox1;
-	private: System::Windows::Forms::Button^ button1;
-
-
-
-
-	protected:
-
-
-	protected:
-
-	protected:
-
-	protected:
-
-	protected:
+		System::Windows::Forms::Label^ label3;
+		System::Windows::Forms::TextBox^ textBox1;
+		System::Windows::Forms::Button^ button1;
 
 
 
@@ -75,19 +60,11 @@ namespace Dylematwieznia {
 
 
 
-	private: System::ComponentModel::IContainer^ components;
-
-	private:
-		/// <summary>
-		/// Wymagana zmienna projektanta.
-		/// </summary>
+	private: 
+		System::ComponentModel::IContainer^ components;
 
 
-#pragma region Windows Form Designer generated code
-		/// <summary>
-		/// Metoda wymagana do obs³ugi projektanta — nie nale¿y modyfikowaæ
-		/// jej zawartoœci w edytorze kodu.
-		/// </summary>
+		#pragma region Windows Form Designer generated code
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
@@ -218,27 +195,18 @@ namespace Dylematwieznia {
 			this->PerformLayout();
 
 		}
-#pragma endregion
-
-		
-private: System::Void start_Click(System::Object^ sender, System::EventArgs^ e) {
-
-
-	GameWindow ^f = gcnew GameWindow(textBox1->Text->ToString(),numericUpDown1->Text->ToString());
-	
-	f->Show();
-	
-	
-	
-
-}
+		#pragma endregion
+		System::Void start_Click(System::Object^ sender, System::EventArgs^ e) {
+			GameWindow ^f = gcnew GameWindow(textBox1->Text->ToString(),numericUpDown1->Text->ToString());
+			f->Show();
+		}
 	  
 
 		  
 
-private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	System::Diagnostics::Process::Start("pomoc.pdf");
-}
+		System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+			System::Diagnostics::Process::Start("pomoc.pdf");
+		}
 
-};
+	};
 }

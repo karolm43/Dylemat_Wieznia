@@ -6,11 +6,14 @@ class Game
 private:
 	const int MAX_PLAYER = 4;
 	Player* players[4];
+	Box* boxes[2];
 	int slots;
 	int rounds;
 	int actualRound;
 	bool gameEnded;
-	Box* boxes[2];
+	bool roundEnded;
+	int formatNumber(int n, int operation);
+	
 
 	void startBoxes();
 	
@@ -24,6 +27,7 @@ public:
 	void setRounds(int rounds);
 	void run();
 	void startRound();
+	void endRound();
 	int getRoundNumber();
 	Player* getEnemy(Player* player);
 	bool isEnded();
